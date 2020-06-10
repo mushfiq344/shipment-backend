@@ -38,3 +38,4 @@ Route::get('/shipmentById/{id}', 'ShipmentController@shipmentById');
 Route::get('/shipmentsOrderByPrice', 'ShipmentController@shipmentsOrderByPrice');
 Route::get('/shipmentsOrderByRating', 'ShipmentController@shipmentsOrderByRating');
 Route::get('/shipmentsOrderByName', 'ShipmentController@shipmentsOrderByName');
+Route::get('/shipmentsSearchByName/{name}', 'ShipmentController@shipmentsSearchByName');

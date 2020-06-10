@@ -70,4 +70,17 @@ class Shipmentcontroller extends Controller
         $Shipments  = Shipment::orderBy('name', 'desc')->paginate(3);
         return $Shipments;
     }
+
+    /**
+     *  Shipments search by Name
+     *
+     * 
+     * @return array
+     */
+    function shipmentsSearchByName($name)
+    {
+
+        $Shipments  = Shipment::where("name", "like", $name . "%")->orderBy('name', 'desc')->paginate(3);
+        return $Shipments;
+    }
 }
