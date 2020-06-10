@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-
+use App\Models\Shipment;
 
 class AllSeeder extends Seeder
 {
@@ -13,6 +13,17 @@ class AllSeeder extends Seeder
      */
     public function run()
     {
+
+
+        // seeding shipment table
+        for ($x = 0; $x <= 49; $x++) {
+
+            $shipment = new Shipment;
+            $shipment->name = Str::random(10);
+            $shipment->price = rand(10, 100);
+            $shipment->rating = rand(10, 100);
+            $shipment->save();
+        }
         // adding total 50 users in user table
         // for ($x = 0; $x <= 49; $x++) {
         //     DB::table('users')->insert([
@@ -33,25 +44,25 @@ class AllSeeder extends Seeder
         //     ]);
         // }
 
-        $usersIDs = DB::table('users')->pluck('id')->all();
-        $moviesIDs = DB::table('movies')->pluck('id')->all();
+        // $usersIDs = DB::table('users')->pluck('id')->all();
+        // $moviesIDs = DB::table('movies')->pluck('id')->all();
 
-        $faker = Faker::create();
+        // $faker = Faker::create();
 
-        // adding total 6 comments for each movie in comments table  
-        foreach ($moviesIDs as $movieID) {
-            $userID = $faker->randomElement($usersIDs);
-            $user =
-                DB::table('users')->where('id', $userID)->pluck('name');
+        // // adding total 6 comments for each movie in comments table  
+        // foreach ($moviesIDs as $movieID) {
+        //     $userID = $faker->randomElement($usersIDs);
+        //     $user =
+        //         DB::table('users')->where('id', $userID)->pluck('name');
 
-            for ($x = 0; $x <= 5; $x++) {
-                DB::table('comments')->insert([
-                    'name' => $user[0],
-                    'movie_id' => $movieID,
-                    'user_id' =>  $userID,
-                    'comment' => Str::random(10)
-                ]);
-            }
-        }
+        //     for ($x = 0; $x <= 5; $x++) {
+        //         DB::table('comments')->insert([
+        //             'name' => $user[0],
+        //             'movie_id' => $movieID,
+        //             'user_id' =>  $userID,
+        //             'comment' => Str::random(10)
+        //         ]);
+        //     }
+        // }
     }
 }
