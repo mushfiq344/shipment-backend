@@ -26,10 +26,15 @@ Route::post('login', 'UserController@authenticate');
 Route::get('open', 'DataController@open');
 
 Route::group(['middleware' => ['jwt.verify']], function () {
-    Route::get('/movies', 'MovieController@index');
+
     Route::get('/movie/{slug_name}', 'MovieController@movie');
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::get('closed', 'DataController@closed');
     Route::get('/comments/{slug_name}', 'MovieController@comments');
     Route::post('/insertComment', 'MovieController@insertComment');
 });
+Route::get('/allShipments', 'ShipmentController@allShipments');
+Route::get('/shipmentById/{id}', 'ShipmentController@shipmentById');
+Route::get('/shipmentsOrderByPrice', 'ShipmentController@shipmentsOrderByPrice');
+Route::get('/shipmentsOrderByRating', 'ShipmentController@shipmentsOrderByRating');
+Route::get('/shipmentsOrderByName', 'ShipmentController@shipmentsOrderByName');
