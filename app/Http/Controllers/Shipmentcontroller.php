@@ -92,8 +92,17 @@ class Shipmentcontroller extends Controller
         return $Shipments;
     }
 
+
+    /**
+     *  loading the json data db
+     * 
+     *
+     * 
+     * @return array
+     */
     function index()
     {
+
         $json = file_get_contents('https://raw.githubusercontent.com/simongomes/webable-javascript-challenge/master/db.json');
         $obj = (array) json_decode($json, true);
 
