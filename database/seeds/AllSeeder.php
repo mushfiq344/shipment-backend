@@ -16,13 +16,6 @@ class AllSeeder extends Seeder
 
 
         // seeding shipment table
-        for ($x = 0; $x <= 49; $x++) {
 
-            $shipment = new Shipment;
-            $shipment->name = Str::random(10);
-            $shipment->price = rand(10, 100);
-            $shipment->rating = rand(10, 100);
-            $shipment->save();
-        }
     }
 }
